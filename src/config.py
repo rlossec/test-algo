@@ -1,0 +1,3 @@
+
+PRIORITY_ORDER = {"STAT": 0, "URGENT": 1, "ROUTINE": 2}
+SORTED_CATEGORIES = sorted(PRIORITY_ORDER.keys(), key=lambda x: PRIORITY_ORDER[x])
