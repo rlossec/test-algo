@@ -20,9 +20,9 @@ def parse_data(data: dict) -> tuple[list, list, list]:
       "id": raw_sample["id"],
       "type": raw_sample["type"],
       "priority": priority,
-      "analysisTime": raw_sample["analysisTime"],
-      "arrivalTime": arrival_time,
-      "patientId": raw_sample["patientId"]
+      "analysis_time": raw_sample["analysisTime"],
+      "arrival_time": arrival_time,
+      "patient_id": raw_sample["patientId"]
     }
     samples.append(sample)
 
@@ -32,11 +32,19 @@ def parse_data(data: dict) -> tuple[list, list, list]:
   for raw_technician in raw_technicians:
     start_time = datetime.combine(today, datetime.strptime(raw_technician["startTime"], "%H:%M").time())
     end_time = datetime.combine(today, datetime.strptime(raw_technician["endTime"], "%H:%M").time())
+    if start_time >= end_time:
+      available = False
+    else:
+      available = True
+      # Calculate remaining time in minutes
+      remaining_time = (end_time - start_time).total_seconds() / 60
     technician = {
       "id": raw_technician["id"],
       "speciality": raw_technician["speciality"],
-      "startTime": start_time,
-      "endTime": end_time
+      "start_time": start_time,
+      "end_time": end_time,
+      "available": available,
+      "remaining_time": remaining_time
     }
     technicians.append(technician)
 
