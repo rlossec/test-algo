@@ -15,16 +15,20 @@ def parse_data(data: dict) -> tuple[list, list, list]:
   return samples, technicians, equipment
 
 
+def sort_samples(samples: list) -> list:
+  return sorted(samples, key=lambda x: PRIORITY_ORDER[x["priority"]])
+
+
 def main():
-  #Example 1
-  data = load_json(f"{DATA_PATH}/input/tests/example_3.json")
+
+  data = load_json(f"{DATA_PATH}/input/tests/test_priorities.json")
   # Parse data
   samples, technicians, equipment = parse_data(data)
-  print("samples", samples)
-  print("technicians", technicians)
-  print("equipment", equipment)
 
   # Sort by priority (STAT, URGENT, ROUTINE)
+
+  samples = sort_samples(samples)
+  print("sorted samples", samples)
 
   # Assign resources
 
