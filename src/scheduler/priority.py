@@ -1,6 +1,5 @@
 
 def sort_samples(samples: list[dict]):
-    print(samples)
     return sorted(samples, key=lambda x: x["priority"])
 
 

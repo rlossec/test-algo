@@ -18,7 +18,7 @@ if __name__ == "__main__":
     # Tests load_json
     DATA_PATH = "../../data"
     data = load_json(f"{DATA_PATH}/input/tests/test_priorities.json")
-    print(data)
+    # print(data)
     data = {
         "samples": "sample_example",
         "technicians": "technician_example",
